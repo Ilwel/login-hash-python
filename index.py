@@ -3,6 +3,10 @@ from connection import cursor
 
 q = Query.from_('passwords').select('hash')
 
+def post_new_hash():
+  password = input()
+  return password
+
 def get_all_hashs():
   q = Query.from_('passwords').select('hash')
   cursor.execute(str(q))
@@ -12,4 +16,4 @@ def get_all_hashs():
   return result
 
 
-print(get_all_hashs())
+print(post_new_hash())
