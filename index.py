@@ -1,19 +1,15 @@
-from pypika import Query, Table, Field
-from connection import cursor
+from user_controller import post_new_hash, post_login, get_all_hashs
+from dotenv import load_dotenv
 
-q = Query.from_('passwords').select('hash')
+load_dotenv()
 
-def post_new_hash():
-  password = input()
-  return password
+print('bem vindo ao sistema de login em python')
+print('1. Cadastro')
+print('2. Login')
 
-def get_all_hashs():
-  q = Query.from_('passwords').select('hash')
-  cursor.execute(str(q))
-  result = cursor.fetchall()
-  [result] = result
-  result = list(result)
-  return result
+user_input = input('Escolha: ')
 
-
-print(post_new_hash())
+if user_input == '1':
+    post_new_hash()
+elif user_input == '2':
+    post_login()
